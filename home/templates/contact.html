@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Contact Us|{{ setting.title}} {% endblock title %}
+
+{% block keywords %} {{setting.keywords}} {% endblock keywords %}
+
+{% block description %} {{setting.description}} {% endblock description %}
+    
+
+        
+
+<!-- Header and banner  -->
+{% block header %} {% include "acheader.html" %} {% endblock header %}
+<!-- Header and banner done  -->
+
+<!-- Content  -->
+{% block content %}  
+
+   <!-- Contact Page  -->
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h2 class="title"><strong>Contact</strong> Us</h2>
+                    {{setting.contact|safe}}
+                </div>
+                <div class="col-2">
+                    <div class="cform-container">
+                        <div class="form-buttons">
+                            <h2 class="title"><strong>Contact</strong> Form</h2>
+                        </div>
+                        <form  action="{% url 'contact' %}" method="POST">
+                        {% csrf_token %}
+                            <input type="text" placeholder="First and last Name" name="name">
+                            <input type="email" placeholder="Email" name="email">
+                            <input type="text" placeholder="Subject" name="subject">
+                            <textarea name="message" placeholder="Your Message" cols="40" rows="10"></textarea>
+                            <button type="submit" class="buttons">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- Contact Page Done  -->
+
+   {% endblock content %}                       
+   <!-- Content done  -->
+
+   <!-- brands   -->
+   {% block brands %}  {% include "brands.html" %} {% endblock brands %}
+   <!-- brands done  -->
+
+   <!-- footer   -->
+   {% block footer %}  {% include "footer.html" %} {% endblock footer %}
+   <!-- footer done  -->
+
+   
